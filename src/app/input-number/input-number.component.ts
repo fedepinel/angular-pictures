@@ -45,10 +45,12 @@ export class InputNumberComponent implements OnInit {
   }
   //Arreglar Bug al comprar fotos
   modificacionCantidad(event): void{
+    console.log(event.key);
     if(event.key >=1 && event.key <=9){
-      //arreglar por que toma el primer numero
-      if(event.target.value > this.max){
-        event.target.value = this.max;
+      console.log("entro primer if");
+      if(event.target.value < this.max){
+        console.log("entro segundo if");
+        this.cantidad = event.target.value;
         this.cantidadChange.emit(this.cantidad);
       }
     }
