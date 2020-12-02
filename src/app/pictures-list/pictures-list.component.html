@@ -1,0 +1,27 @@
+<h1>Lista de fotografias</h1>
+<table class="container-fluid table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Miniatura foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Resolucion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad disponibles</th>
+        <th scope="col">Compra</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Preguntar por que el primero no funcion el background color -->
+      <tr *ngFor="let picture of pictures" [ngClass] ="{'promocion': picture.promocion }">
+        <th><img [src]="picture.miniatura" [alt]="picture.nombre"></th>
+        <td>{{picture.nombre}}</td>
+        <td>{{picture.resolucion}}</td>
+        <td>{{picture.precio | currency}}</td>
+        <td><span class="badge badge-warning" *ngIf="picture.stock==0">Sin Stock </span>{{picture.stock}}</td>
+        <td>
+          <app-input-number [(cantidad)]="picture.cantidad" [max]="picture.stock" (maximoAlcanzado)="maximoAlcanzado($event)"></app-input-number>
+          <button class="btn" (click)="agregarAlCarrito(picture)">Comprar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
