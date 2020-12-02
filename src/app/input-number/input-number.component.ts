@@ -46,7 +46,7 @@ export class InputNumberComponent implements OnInit {
   //Arreglar Bug al comprar fotos
   modificacionCantidad(event): void{
     console.log(event.key);
-    if(event.key >=1 && event.key <=9){
+    if(event.key >=0 && event.key <=9){
       if(event.target.value <= this.max){
         let cantidadSeleccionada = parseInt(event.target.value);
         console.log(cantidadSeleccionada);
