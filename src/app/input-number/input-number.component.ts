@@ -47,10 +47,10 @@ export class InputNumberComponent implements OnInit {
   modificacionCantidad(event): void{
     console.log(event.key);
     if(event.key >=1 && event.key <=9){
-      console.log("entro primer if");
-      if(event.target.value < this.max){
-        console.log("entro segundo if");
-        this.cantidad = event.target.value;
+      if(event.target.value <= this.max){
+        let cantidadSeleccionada = parseInt(event.target.value);
+        console.log(cantidadSeleccionada);
+        this.cantidad = cantidadSeleccionada;
         this.cantidadChange.emit(this.cantidad);
       }
     }
